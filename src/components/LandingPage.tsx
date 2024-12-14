@@ -418,6 +418,40 @@ const LandingPage = () => {
         </div>
       </section>
 
+      {/* Карта */}
+      <section className="py-24 bg-[#f8f7f5] relative overflow-hidden">
+        <DecorativeLines />
+        <div className="container mx-auto px-4 relative">
+          <GlitchEffect className="text-4xl font-black mb-12">
+            КАК ДОБРАТЬСЯ
+          </GlitchEffect>
+          <div className="w-full h-[500px] relative overflow-hidden">
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=37.555793,55.657439,37.565835,55.661439&layer=mapnik&marker=55.659439,37.560814"
+              width="100%"
+              height="100%"
+              className="border-2 border-orange-500"
+              loading="lazy"
+            ></iframe>
+            <a
+              href="https://www.openstreetmap.org/?mlat=55.659439&mlon=37.560814#map=17/55.659439/37.560814"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute bottom-4 right-4 bg-orange-500 text-white px-4 py-2 hover:bg-orange-600 transition-colors"
+            >
+              Открыть большую карту
+            </a>
+          </div>
+          <div className="mt-6 flex items-start gap-4">
+            <MapPin className="w-6 h-6 text-orange-500 flex-shrink-0 mt-1" />
+            <div>
+              <p className="text-xl font-bold mb-2">ДК «Розмарин»</p>
+              <p className="text-gray-600">Улица Вавилова, 38А, Москва</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Команда */}
       <section className="py-24 bg-[#f8f7f5] relative overflow-hidden">
         <DecorativeLines />
