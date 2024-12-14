@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Calendar, Clock, MapPin, Share2, Mail, Phone } from "lucide-react";
+import GlitchLogo from "./GlitchLogo";
 
 const GlitchEffect = ({ children, className }) => {
   return (
@@ -119,8 +120,10 @@ const LandingPage = () => {
               <div>ТЕЙ</div>
             </GlitchEffect>
 
-            <div className="absolute top-8 right-8 rotate-90 origin-top-right">
-              <span className="text-orange-500 font-bold">соУЧАСТНИК</span>
+            <div className="absolute -right-52 top-0 rotate-90 origin-left">
+              <span className="text-orange-500 font-black text-7xl tracking-widest hover:tracking-normal transition-all duration-700 cursor-default">
+                соУЧАСТНИК
+              </span>
             </div>
 
             <div className="mt-12 space-y-4">
@@ -144,10 +147,12 @@ const LandingPage = () => {
                 <div className="absolute inset-0 bg-black opacity-0 hover:opacity-20 transition-opacity" />
               </button>
 
-              <div className="w-24 h-24 relative overflow-hidden">
+              <div className="w-240 h-240 overflow-hidden">
                 <div className="absolute inset-0 border-2 border-dashed border-orange-500 animate-[spin_20s_linear_infinite]" />
                 <div className="absolute inset-0 flex items-center justify-center text-orange-500">
-                  ЛОГО
+                  <div className="w-96 -mt-24 transform scale-150 origin-top">
+                    <GlitchLogo />
+                  </div>
                 </div>
               </div>
             </div>
@@ -336,7 +341,7 @@ const LandingPage = () => {
                 <div key={photo} className="flex-none w-72 h-48 relative group">
                   <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-transparent opacity-0 group-hover:opacity-20 transition-opacity" />
                   <img
-                    src={`/${photo}.png`}
+                    src={`${import.meta.env.BASE_URL}${photo}.png`}
                     alt={`Фото ${photo} с прошлой встречи`}
                     className="w-full h-full object-cover"
                   />
@@ -349,14 +354,21 @@ const LandingPage = () => {
           <div className="max-w-3xl mx-auto relative group">
             <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-transparent opacity-0 group-hover:opacity-20 transition-opacity" />
 
-            <video className="w-full aspect-video object-cover">
-              <source src="/video.mp4" type="video/mp4" />
+            <video
+              controls
+              playsInline
+              className="w-full aspect-video object-cover"
+            >
+              <source
+                src={`${import.meta.env.BASE_URL}video.mp4`}
+                type="video/mp4"
+              />
             </video>
-            <button className="absolute inset-0 flex items-center justify-center">
+            {/* <button className="absolute inset-0 flex items-center justify-center">
               <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center hover:bg-orange-400 transition-colors">
                 <div className="w-0 h-0 border-t-8 border-b-8 border-l-12 border-transparent border-l-white ml-1"></div>
               </div>
-            </button>
+            </button> */}
           </div>
         </div>
       </section>
@@ -416,8 +428,13 @@ const LandingPage = () => {
           <div className="flex justify-center items-center gap-12">
             {["Ксения", "Наташа", "Стефания", "Ильдар"].map((name) => (
               <div key={name} className="text-center relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-transparent opacity-0 group-hover:opacity-20 transition-opacity" />
-                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-orange-600 to-orange-400 mb-4"></div>
+                {/* <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-transparent opacity-0 group-hover:opacity-20 transition-opacity" /> */}
+                <img
+                  src={`${import.meta.env.BASE_URL}${name}.png`}
+                  alt={name}
+                  className="object-cover opacity-100 w-24 rounded-full"
+                />
+
                 <h3 className="font-bold">{name}</h3>
               </div>
             ))}
@@ -432,18 +449,39 @@ const LandingPage = () => {
           <GlitchEffect className="text-4xl font-black mb-12">
             ПАРТНЕРЫ
           </GlitchEffect>
-          <div className="grid md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            {["Яндекс.Практикум", "OpenAI", "Midjourney", "Leonardo"].map(
-              (partner) => (
-                <div key={partner} className="relative group overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-transparent opacity-0 group-hover:opacity-20 transition-opacity" />
-                  <div className="bg-[#f8f7f5] p-6">
-                    <div className="h-16 bg-gradient-to-r from-orange-500 to-transparent opacity-10 mb-4"></div>
-                    <p className="font-bold text-center">{partner}</p>
+          <div className="max-w-4xl mx-auto space-y-12">
+            {/* Главный партнер */}
+            <div className="relative group overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-transparent opacity-0 group-hover:opacity-20 transition-opacity" />
+              {/* <div className="bg-gradient-to-r from-orange-500  opacity-10  to-transparent p-2"> */}
+              <div className="h-fit bg-gradient-to-r from-orange-500 to-transparent opacity-10 mb-6"></div>
+
+              <img
+                src={`${import.meta.env.BASE_URL}yandex.png`}
+                alt="Яндекс.Практикум"
+                className="w-full h-full object-cover opacity-100"
+              />
+              {/* </div> */}
+            </div>
+
+            {/* Остальные партнеры */}
+            <div className="grid md:grid-cols-3 gap-8">
+              {["OpenAI", "Midjourney", "Leonardo", "Antropic"].map(
+                (partner) => (
+                  <div key={partner} className="relative group overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-transparent opacity-0 group-hover:opacity-20 transition-opacity" />
+                    {/* <div className="bg-[#f8f7f5] p-4"> */}
+                    {/* <div className="h-20 bg-gradient-to-r from-orange-500 to-transparent opacity-10 mb-3"></div> */}
+                    <img
+                      src={`${import.meta.env.BASE_URL}${partner}.png`}
+                      alt={partner}
+                      className=" object-cover"
+                    />
                   </div>
-                </div>
-              )
-            )}
+                  // </div>
+                )
+              )}
+            </div>
           </div>
         </div>
       </section>
