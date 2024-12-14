@@ -99,7 +99,7 @@ const LandingPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#f8f7f5] to-[#e8e6e2] font-['Roboto']">
+    <div className="min-h-screen bg-gradient-to-b from-[#f8f7f5] to-[#e8e6e2] font-sans">
       {/* Header с глитч-эффектами */}
       <header className="relative overflow-hidden min-h-screen">
         <div className="absolute inset-0">
@@ -357,6 +357,7 @@ const LandingPage = () => {
             <video
               controls
               playsInline
+              preload="auto"
               className="w-full aspect-video object-cover"
             >
               <source
